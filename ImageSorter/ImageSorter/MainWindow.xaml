@@ -1,0 +1,20 @@
+﻿<Window x:Class="ImageSorter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageSorter"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="600">
+    <Canvas>
+        <TextBlock Canvas.Left="320" FontSize="20">ImageSorter</TextBlock>
+        <Button Name="btnOpFileClick" Click="btnOpFileClick_Click" Canvas.Top="140" Canvas.Left="50" >Open Image Fille</Button>
+        <Image Name="imgDisPic" Height="200"  Width="Auto" Canvas.Right="90" Canvas.Top="80" Source="Image/PornOfScreen.jpg"></Image>
+        <TextBlock Name="txtOfDic" Canvas.Left="20" Canvas.Bottom="60" Text="Image url:"></TextBlock>
+        <TextBlock Name="txtOfDicPath" Canvas.Left="20" Canvas.Bottom="40" Text="Image Path:"></TextBlock>
+        <Button Name="btnSortStart" Click="btnSortStart_Click" Canvas.Bottom="38" Canvas.Right="100" Canvas.Left="77" Canvas.Top="198">Sort Start</Button>
+        <TextBlock Name="txtOfNumOfCp" Canvas.Left="50" Canvas.Bottom="120"></TextBlock>
+        <TextBlock Name="txtOfNumOfHor" Canvas.Left="50" Canvas.Bottom="100"></TextBlock>
+        <TextBlock Name="txtOfNumOfVer" Canvas.Left="50" Canvas.Bottom="80"></TextBlock>
+    </Canvas>
+</Window>
