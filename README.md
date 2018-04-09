@@ -1,7 +1,7 @@
 # ImageSorter
 Write by VS2017 and C# in WPF platfom,use it to sort picture
 
-#图片分类器
+图片分类器
 在VS2017上使用基于C#的WPF平台编写
 能够将横板和竖版的图片给分类出来
 并在选择分类文件夹的下分别新建Hor(横板)和Ver(竖版)文件夹，来存放图片。
