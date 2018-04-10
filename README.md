@@ -1,5 +1,12 @@
 # ImageSorter
 Write by VS2017 and C# in WPF platfom,use it to sort picture
+Function:
+  Distinguish the picture is horizontal/landscape or vertical/portrait in a heap of various picture Folder.
+  And the landscape picture copied to the path of your choosed just like "../Hor/",the portrait picture will be "../Ver/"
+  Just enjoy it and do it
+Warm:
+  Make the folder your choosed only have image file,or the program will crash...
+  I will fixed after work 
 
 图片分类器
 在VS2017上使用基于C#的WPF平台编写
