@@ -1,0 +1,30 @@
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\bin\Debug\ImageSorter.exe.config
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\bin\Debug\ImageSorter.exe
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\bin\Debug\ImageSorter.pdb
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csprojResolveAssemblyReference.cache
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\MainWindow.g.cs
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\App.g.cs
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter_MarkupCompile.cache
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter_MarkupCompile.lref
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\MainWindow.baml
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.g.resources
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.Properties.Resources.resources
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csproj.GenerateResource.cache
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csproj.CoreCompileInputs.cache
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.exe
+C:\Users\John Watson\source\repos\ImageSorter\ImageSorter\obj\Debug\ImageSorter.pdb
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\bin\Debug\ImageSorter.exe.config
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\bin\Debug\ImageSorter.exe
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\bin\Debug\ImageSorter.pdb
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csprojResolveAssemblyReference.cache
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\MainWindow.g.cs
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\App.g.cs
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter_MarkupCompile.cache
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter_MarkupCompile.lref
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\MainWindow.baml
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.g.resources
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.Properties.Resources.resources
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csproj.GenerateResource.cache
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.csproj.CoreCompileInputs.cache
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.exe
+C:\Users\NJDF\Source\Repos\ImageSorter2\ImageSorter\ImageSorter\obj\Debug\ImageSorter.pdb
