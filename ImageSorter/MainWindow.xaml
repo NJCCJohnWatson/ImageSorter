@@ -5,16 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageSorter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
-    <Canvas>
-        <TextBlock Canvas.Left="320" FontSize="20">ImageSorter</TextBlock>
-        <Button Name="btnOpFileClick" Click="btnOpFileClick_Click" Canvas.Top="140" Canvas.Left="50" >Open Image Fille</Button>
-        <Image Name="imgDisPic" Height="200"  Width="Auto" Canvas.Right="90" Canvas.Top="80"></Image>
-        <TextBlock Name="txtOfDic" Canvas.Left="20" Canvas.Bottom="60" Text="Image url:"></TextBlock>
-        <TextBlock Name="txtOfDicPath" Canvas.Left="20" Canvas.Bottom="40" Text="Image Path:"></TextBlock>
-        <Button Name="btnSortStart" Click="btnSortStart_Click" Canvas.Bottom="38" Canvas.Right="100" Canvas.Left="77" Canvas.Top="198">Sort Start</Button>
-        <TextBlock Name="txtOfNumOfCp" Canvas.Left="50" Canvas.Bottom="120"></TextBlock>
-        <TextBlock Name="txtOfNumOfHor" Canvas.Left="50" Canvas.Bottom="100"></TextBlock>
-        <TextBlock Name="txtOfNumOfVer" Canvas.Left="50" Canvas.Bottom="80"></TextBlock>
-    </Canvas>
-</Window>
+        Title="ImageSorter" Height="400" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"></RowDefinition>
+            <RowDefinition Height="195*"/>
+            <RowDefinition Height="44*"></RowDefinition>
+            <RowDefinition Height="94*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="94*"></ColumnDefinition>
+            <ColumnDefinition Width="18*"></ColumnDefinition>
+            <ColumnDefinition Width="169*"></ColumnDefinition>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Grid.Row="2" Grid.Column="2" Name="CanvasOfBtn">
+            <Button Name="btnSortStart" Click="btnSortStart_Click" Canvas.Top="12" Canvas.Left="180">Sort Start</Button>
+            <Button Name="btnOpFileClick" Click="btnOpFileClick_Click" Canvas.Top="12" Canvas.Left="50"  >Open Image</Button>
+        </Canvas>
+        <Canvas Grid.Row="1" Grid.Column="0">
+            <TextBlock Name="txtOfDic" Text="Image url:"  Canvas.Left="10" Canvas.Top="50"/>
+            <TextBlock Name="txtOfDicPath" Text="Image Path:" Canvas.Left="10" Canvas.Top="15"/>
+        </Canvas>
+        <Canvas Grid.Row="3" Grid.Column="0">
+            <TextBlock Name="txtOfNumOfCp" Canvas.Top="10" Canvas.Left="15"/>
+            <TextBlock Name="txtOfNumOfHor" Canvas.Top="35" Canvas.Left="15"/>
+            <TextBlock Name="txtOfNumOfVer" Canvas.Top="55" Canvas.Left="15"/>
+        </Canvas>
+        <TextBlock FontSize="20" Grid.Row="0" HorizontalAlignment="Center">ImageSorter</TextBlock>
+        <Image Name="imgDisPic"  Width="Auto" Margin="0,0,0,1" Grid.Row="1" Grid.Column="2"/>
+        <ProgressBar Name="pgb" Visibility="Hidden" Value="0" Background="Azure" Margin="0,34,4,51" Grid.Row="1"/>
+
+    </Grid>
+
+
+</Window> 

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.VisualBasic.FileIO;
 namespace ImageSorter
 {
     /// <summary>
@@ -21,11 +22,13 @@ namespace ImageSorter
     public partial class MainWindow : Window
     {
         String imgPath;
+        Uri uri;
+        BitmapImage bitmap;
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-
         private void btnOpFileClick_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -35,99 +38,112 @@ namespace ImageSorter
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //此处做你想做的事 ...=openFileDialog1.FileName; 
+                //set the image you selected as cover
                 imgPath = openFileDialog1.FileName;
-               
+                uri = new Uri(imgPath, UriKind.Absolute);
+                bitmap = new BitmapImage(uri);
+                imgDisPic.Source = bitmap;
+                txtOfDic.Text = "Image Url:" + imgPath;
+                string strOfimgDisPath = System.IO.Path.GetDirectoryName(imgPath);
+                txtOfDicPath.Text = "Image Path:" + strOfimgDisPath;
             }
 
         }
 
         private void btnSortStart_Click(object sender, RoutedEventArgs e)
         {
-            txtOfDic.Text = "Image Url:" + imgPath;
-            Uri uri = new Uri(imgPath, UriKind.Absolute);
-            BitmapImage bitmap = new BitmapImage(uri);
-            imgDisPic.Source = bitmap;
-            string imgDi = System.IO.Path.GetDirectoryName(imgPath);
-            txtOfDicPath.Text = "Image Path:" + imgDi;
-            DirectoryInfo imgF = new DirectoryInfo(imgDi);
-            int strOfflagOfCped = 0;
-            int strOfFlagOfHor = 0;
-            int strOfFlagOfVer = 0;
-            foreach (FileInfo NextFile in imgF.GetFiles())
+            // Verify imagepath is not null 
+            if (imgPath != null)
             {
-                //flag of all number
-                strOfflagOfCped++;
-                //accent this file's fullname
-                string filename = NextFile.FullName;
-                //now this file's directory
-                string strsourcepath = NextFile.DirectoryName;
-                //redefine uri for bitmap to use
-                uri = new Uri(filename);
-                //destnation Hor image dict 
-                string strHortargetPath = strsourcepath + "\\Hor";
-                //destnation Vertical image dict 
-                string strVertargetPath = strsourcepath + "\\Ver";
-                //destination of hor file
-                string strHorDestFile = System.IO.Path.Combine(strHortargetPath, NextFile.Name);
-                //destination of vertical file
-                string strVerDestFile = System.IO.Path.Combine(strVertargetPath, NextFile.Name);
-                //new a bitmap decoder to get the height and weivght of picture 
-                var decoder = BitmapDecoder.Create(uri, BitmapCreateOptions.DelayCreation, BitmapCacheOption.None);
-                var frame = decoder.Frames.FirstOrDefault();
-                var height = frame.PixelHeight;
-                var width = frame.PixelWidth;
-                if (height < width)
-                //sort horizantal picture
+                string imgDi = System.IO.Path.GetDirectoryName(imgPath);
+                DirectoryInfo imgF = new DirectoryInfo(imgDi);
+                int strOfflagOfCped = 0;
+                int strOfFlagOfHor = 0;
+                int strOfFlagOfVer = 0;
+                Boolean boolOfIsImage;
+                foreach (FileInfo NextFile in imgF.GetFiles())
                 {
-                    // verify directoty is no exist
-                    if (System.IO.Directory.Exists(strHortargetPath))
+                    boolOfIsImage = ImageAction.IsNotImage(NextFile.FullName);
+                    if (boolOfIsImage == true)
                     {
-                        //verify file is not exist
-                        if (System.IO.File.Exists(strHorDestFile)==false)
+                        //flag of all number
+                        strOfflagOfCped++;
+                        //accent this file's fullname
+                        string filename = NextFile.FullName;
+                        //now this file's directory
+                        string strsourcepath = NextFile.DirectoryName;
+                        //redefine uri for bitmap to use
+                        uri = new Uri(filename);
+                        //destnation Hor image dict 
+                        string strHortargetPath = strsourcepath + "\\Hor";
+                        //destnation Vertical image dict 
+                        string strVertargetPath = strsourcepath + "\\Ver";
+                        //destination of hor file
+                        string strHorDestFile = System.IO.Path.Combine(strHortargetPath, NextFile.Name);
+                        //destination of vertical file
+                        string strVerDestFile = System.IO.Path.Combine(strVertargetPath, NextFile.Name);
+                        //new a bitmap decoder to get the height and weivght of picture 
+                        if (ImageAction.IsHorOrNot(uri))
+                        //sort horizantal picture
                         {
-                        System.IO.File.Copy(filename, strHorDestFile);
-                        //set copied horizantal picture flag and view num
-                        strOfFlagOfHor++;
-                        txtOfNumOfHor.Text = "Horizontal Picture Number:" + strOfFlagOfHor.ToString();
+                            //make progressbar can be seen
+                            // pgb.Visibility = System.Windows.Visibility.Visible;
+                            // verify directoty is no exist
+                            if (System.IO.Directory.Exists(strHortargetPath))
+                            {
+                                //verify file is not exist
+                                if (System.IO.File.Exists(strHorDestFile) == false)
+                                {
+                                    System.IO.File.Copy(filename, strHorDestFile);
+                                    //set copied horizantal picture flag and view num
+                                    strOfFlagOfHor++;
+                                    txtOfNumOfHor.Text = "Horizontal Picture Number:" + strOfFlagOfHor.ToString();
+                                }
+
+                            }
+                            else
+                            {
+                                //without directoty,with file,so here don't need to verify file exist
+                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(NextFile.DirectoryName);
+                                System.IO.Directory.CreateDirectory(strHortargetPath);
+                                System.IO.File.Copy(filename, strHorDestFile);
+                                strOfFlagOfHor++;
+                                txtOfNumOfHor.Text = "Horizontal Picture Number:" + strOfFlagOfHor.ToString();
+                            }
                         }
-                        
-                    }
-                    else
-                    {
-                        //without directoty,with file,so here don't need to verify file exist
-                        System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(NextFile.DirectoryName);
-                        System.IO.Directory.CreateDirectory(strHortargetPath);
-                        System.IO.File.Copy(filename, strHorDestFile);
-                        strOfFlagOfHor++;
-                        txtOfNumOfHor.Text = "Horizontal Picture Number:" + strOfFlagOfHor.ToString();
-                    }
-                }
-                else
-                //sort vertical picture
-                {
-                     if (System.IO.Directory.Exists(strVertargetPath))
-                     {
-                        if (System.IO.File.Exists(strVerDestFile)==false)
+                        else
+                        //sort vertical picture
                         {
-                        System.IO.File.Copy(filename, strVerDestFile);
-                        strOfFlagOfVer++;
-                        txtOfNumOfVer.Text = "Vertical Picture Number:" + strOfFlagOfVer.ToString();
+                            if (System.IO.Directory.Exists(strVertargetPath))
+                            {
+                                if (System.IO.File.Exists(strVerDestFile) == false)
+                                {
+                                    System.IO.File.Copy(filename, strVerDestFile);
+                                    strOfFlagOfVer++;
+                                    txtOfNumOfVer.Text = "Vertical Picture Number:" + strOfFlagOfVer.ToString();
+                                }
+
+                            }
+                            else
+                            {
+                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(NextFile.DirectoryName);
+                                System.IO.Directory.CreateDirectory(strVertargetPath);
+                                System.IO.File.Copy(filename, strVerDestFile);
+                                strOfFlagOfVer++;
+                                txtOfNumOfVer.Text = "Vertical Picture Number:" + strOfFlagOfVer.ToString();
+                            }
                         }
-                       
-                     }
-                    else
-                    {
-                        System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(NextFile.DirectoryName);
-                        System.IO.Directory.CreateDirectory(strVertargetPath);
-                        System.IO.File.Copy(filename, strVerDestFile);
-                        strOfFlagOfVer++;
-                        txtOfNumOfVer.Text = "Vertical Picture Number:" + strOfFlagOfVer.ToString();
                     }
+
                 }
+                //set all sorted picture num and view num
+                txtOfNumOfCp.Text = "Already Sorted:" + strOfflagOfCped.ToString();
+
             }
-            //set all sorted picture num and view num
-            txtOfNumOfCp.Text = "Already Sorted:" + strOfflagOfCped.ToString();
+            else
+            {
+                MessageBox.Show("Please Select Image Path!","Not Select Path");
+            }
         }
     }
 }
